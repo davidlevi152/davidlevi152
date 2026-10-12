@@ -1,377 +1,385 @@
-<\!DOCTYPE html\>
-<html lang="he" dir="rtl"\>
-<head\>
-    <meta charset="UTF\-8"\>
-    <meta name="viewport" content="width=device\-width, initial\-scale=1\.0"\>
-    <title\>האתר של דויד</title\>
-    <style\>
-        /\* הגדרות כלליות \*/
-        \* \{
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>האתר של דויד</title>
+
+    <style>
+        * {
             margin: 0;
             padding: 0;
-            box\-sizing: border\-box;
-        \}
-        html \{
-            scroll\-behavior: smooth;
-        \}
-        body \{
-            font\-family: Arial, sans\-serif;
-            background\-color: \#090909;
-            color: \#ffffff;
-            line\-height: 1\.8;
-        \}
-        a \{
-            text\-decoration: none;
-            color: inherit;
-        \}
-        \.container \{
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #080808;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            line-height: 1.8;
+        }
+
+        .container {
             width: 90%;
-            max\-width: 1100px;
+            max-width: 1050px;
             margin: auto;
-        \}
-        /\* תפריט עליון \*/
-        header \{
-            background\-color: \#111111;
-            border\-bottom: 1px solid \#252525;
-            position: sticky;
-            top: 0;
-            z\-index: 100;
-        \}
-        nav \{
-            min\-height: 75px;
+        }
+
+        header {
+            background: #111111;
+            border-bottom: 1px solid #292929;
+        }
+
+        nav {
+            min-height: 75px;
             display: flex;
-            justify\-content: space\-between;
-            align\-items: center;
+            justify-content: space-between;
+            align-items: center;
             gap: 20px;
-        \}
-        \.logo \{
-            font\-size: 24px;
-            font\-weight: bold;
-            color: \#38bdf8;
-        \}
-        \.nav\-links \{
+        }
+
+        .logo {
+            color: #38bdf8;
+            font-size: 25px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-links {
             display: flex;
-            gap: 25px;
-            list\-style: none;
-        \}
-        \.nav\-links a \{
-            color: \#dddddd;
-            transition: color 0\.3s;
-        \}
-        \.nav\-links a:hover \{
-            color: \#38bdf8;
-        \}
-        /\* אזור פתיחה \*/
-        \.hero \{
-            min\-height: 470px;
-            display: flex;
-            align\-items: center;
-            text\-align: center;
-            background:
-                radial\-gradient&#40;ellipse at top, \#172333 0%, \#090909 65%&#41;;
-            padding: 80px 0;
-        \}
-        \.hero\-content \{
-            width: 100%;
-        \}
-        \.badge \{
-            display: inline\-block;
-            border: 1px solid \#38bdf8;
-            color: \#38bdf8;
-            border\-radius: 30px;
-            padding: 5px 18px;
-            margin\-bottom: 20px;
-            font\-size: 14px;
-        \}
-        \.hero h1 \{
-            font\-size: clamp&#40;38px, 7vw, 64px&#41;;
-            line\-height: 1\.2;
-            margin\-bottom: 20px;
-        \}
-        \.hero h1 span \{
-            color: \#38bdf8;
-        \}
-        \.hero p \{
-            max\-width: 600px;
-            margin: 0 auto 30px;
-            color: \#bbbbbb;
-            font\-size: 18px;
-        \}
-        /\* כפתורים \*/
-        \.btn \{
-            display: inline\-block;
-            background\-color: \#0284c7;
-            color: white;
-            padding: 12px 25px;
-            border\-radius: 10px;
-            font\-weight: bold;
-            border: 1px solid \#0284c7;
-            transition: 0\.3s;
-            cursor: pointer;
-            font\-size: 16px;
-        \}
-        \.btn:hover \{
-            background\-color: \#38bdf8;
-            color: \#090909;
-            transform: translateY&#40;\-3px&#41;;
-        \}
-        \.btn\-outline \{
-            background\-color: transparent;
-            border\-color: \#444444;
-            margin\-right: 10px;
-        \}
-        \.btn\-outline:hover \{
-            border\-color: \#38bdf8;
-            color: white;
-            background\-color: \#172333;
-        \}
-        /\* אזורים כלליים \*/
-        section \{
-            padding: 75px 0;
-        \}
-        \.section\-title \{
-            font\-size: 34px;
-            text\-align: center;
-            margin\-bottom: 15px;
-        \}
-        \.section\-title span \{
-            color: \#38bdf8;
-        \}
-        \.section\-description \{
-            text\-align: center;
-            color: \#aaaaaa;
-            margin\-bottom: 40px;
-        \}
-        /\* כרטיסים \*/
-        \.cards \{
-            display: grid;
-            grid\-template\-columns: repeat&#40;3, minmax&#40;0, 1fr&#41;&#41;;
             gap: 22px;
-        \}
-        \.card \{
-            background\-color: \#141414;
-            border: 1px solid \#292929;
-            border\-radius: 16px;
-            padding: 28px;
-            transition: 0\.3s;
-        \}
-        \.card:hover \{
-            transform: translateY&#40;\-6px&#41;;
-            border\-color: \#38bdf8;
-            box\-shadow: 0 10px 30px \#00000066;
-        \}
-        \.card\-icon \{
-            font\-size: 32px;
-            margin\-bottom: 12px;
-        \}
-        \.card h3 \{
-            font\-size: 21px;
-            margin\-bottom: 10px;
-        \}
-        \.card p \{
-            color: \#aaaaaa;
-        \}
-        /\* אזור אודות \*/
-        \.about \{
-            background\-color: \#101010;
-            border\-top: 1px solid \#202020;
-            border\-bottom: 1px solid \#202020;
-        \}
-        \.about\-box \{
-            max\-width: 750px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #dddddd;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #38bdf8;
+        }
+
+        .hero {
+            min-height: 440px;
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(ellipse at top, #162536, #080808 70%);
+        }
+
+        .tag {
+            display: inline-block;
+            color: #38bdf8;
+            border: 1px solid #38bdf8;
+            border-radius: 30px;
+            padding: 4px 17px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 7vw, 65px);
+            line-height: 1.3;
+            margin-bottom: 15px;
+        }
+
+        .blue {
+            color: #38bdf8;
+        }
+
+        .hero p {
+            color: #bbbbbb;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 28px;
+        }
+
+        .button {
+            display: inline-block;
+            background: #0284c7;
+            color: white;
+            border: 1px solid #0284c7;
+            border-radius: 9px;
+            padding: 11px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: #38bdf8;
+            color: #080808;
+            transform: translateY(-3px);
+        }
+
+        section {
+            padding: 70px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #999999;
+            margin-bottom: 35px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #141414;
+            border: 1px solid #292929;
+            border-radius: 14px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: #38bdf8;
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .card p {
+            color: #aaaaaa;
+        }
+
+        .about {
+            background: #101010;
+            border-top: 1px solid #222222;
+            border-bottom: 1px solid #222222;
+        }
+
+        .about-box {
+            max-width: 750px;
             margin: auto;
-            text\-align: center;
-            background\-color: \#151515;
-            border: 1px solid \#292929;
-            padding: 35px;
-            border\-radius: 18px;
-        \}
-        \.about\-box p \{
-            color: \#cccccc;
-            font\-size: 17px;
-        \}
-        /\* אזור יצירת קשר \*/
-        \.contact\-box \{
-            max\-width: 650px;
+            padding: 30px;
+            text-align: center;
+            background: #151515;
+            border: 1px solid #292929;
+            border-radius: 15px;
+        }
+
+        .about-box p {
+            color: #cccccc;
+            font-size: 17px;
+        }
+
+        .contact-box {
+            max-width: 650px;
             margin: auto;
-            text\-align: center;
-            background: linear\-gradient&#40;135deg, \#151515, \#101b27&#41;;
-            border: 1px solid \#293744;
-            border\-radius: 18px;
-            padding: 40px 25px;
-        \}
-        \.contact\-box p \{
-            color: \#bbbbbb;
-            margin\-bottom: 25px;
-        \}
-        /\* תחתית האתר \*/
-        footer \{
-            background\-color: \#111111;
-            border\-top: 1px solid \#252525;
-            text\-align: center;
-            padding: 25px 10px;
-            color: \#888888;
-            font\-size: 14px;
-        \}
-        /\* התאמה לטלפונים \*/
-        @media &#40;max\-width: 700px&#41; \{
-            nav \{
-                flex\-direction: column;
-                justify\-content: center;
+            padding: 35px 20px;
+            text-align: center;
+            background: #121a22;
+            border: 1px solid #283b4b;
+            border-radius: 15px;
+        }
+
+        .contact-box p {
+            color: #bbbbbb;
+            margin: 10px 0 22px;
+        }
+
+        #message {
+            color: #38bdf8;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #111111;
+            border-top: 1px solid #292929;
+            padding: 22px 10px;
+            text-align: center;
+            color: #888888;
+            font-size: 14px;
+        }
+
+        @media (max-width: 650px) {
+            nav {
+                flex-direction: column;
                 padding: 15px 0;
                 gap: 8px;
-            \}
-            \.nav\-links \{
-                gap: 18px;
-                font\-size: 14px;
-            \}
-            \.hero \{
-                min\-height: 400px;
-                padding: 65px 0;
-            \}
-            \.hero p \{
-                font\-size: 16px;
-            \}
-            \.cards \{
-                grid\-template\-columns: 1fr;
-            \}
-            section \{
-                padding: 55px 0;
-            \}
-            \.section\-title \{
-                font\-size: 29px;
-            \}
-            \.about\-box \{
-                padding: 25px 18px;
-            \}
-            \.btn\-outline \{
-                margin\-right: 0;
-                margin\-top: 12px;
-            \}
-        \}
-    </style\>
-</head\>
-<body\>
-    <\!\-\- תפריט \-\-\>
-    <header\>
-        <nav class="container"\>
-            <a href="\#home" class="logo"\>DAVID\.</a\>
-            <ul class="nav\-links"\>
-                <li\><a href="\#home"\>בית</a\></li\>
-                <li\><a href="\#about"\>אודותיי</a\></li\>
-                <li\><a href="\#interests"\>תחומי עניין</a\></li\>
-                <li\><a href="\#contact"\>צור קשר</a\></li\>
-            </ul\>
-        </nav\>
-    </header\>
-    <main\>
-        <\!\-\- עמוד הבית \-\-\>
-        <section class="hero" id="home"\>
-            <div class="container hero\-content"\>
-                <div class="badge"\>ברוכים הבאים לאתר שלי</div\>
-                <h1\>
-                    שלום, אני <span\>דויד</span\> 👋
-                </h1\>
-                <p\>
-                    זה האתר האישי שלי\.
-                    כאן אני לומד, יוצר, מתפתח
-                    ובונה דברים חדשים צעד אחר צעד\.
-                </p\>
-                <a href="\#about" class="btn"\>קצת עליי</a\>
-                <a href="\#interests" class="btn btn\-outline"\>
-                    תחומי העניין שלי
-                </a\>
-            </div\>
-        </section\>
-        <\!\-\- תחומי עניין \-\-\>
-        <section id="interests"\>
-            <div class="container"\>
-                <h2 class="section\-title"\>
-                    מה <span\>מעניין אותי?</span\>
-                </h2\>
-                <p class="section\-description"\>
-                    כמה מהדברים שאני רוצה ללמוד ולפתח\.
-                </p\>
-                <div class="cards"\>
-                    <article class="card"\>
-                        <div class="card\-icon"\>💻</div\>
-                        <h3\>טכנולוגיה</h3\>
-                        <p\>
-                            ללמוד לבנות אתרים, להכיר קוד
-                            וליצור דברים חדשים באינטרנט\.
-                        </p\>
-                    </article\>
-                    <article class="card"\>
-                        <div class="card\-icon"\>🎯</div\>
-                        <h3\>מטרות ועתיד</h3\>
-                        <p\>
-                            להציב מטרות, להתקדם בהדרגה
-                            וללמוד דברים שיעזרו לי בעתיד\.
-                        </p\>
-                    </article\>
-                    <article class="card"\>
-                        <div class="card\-icon"\>🚀</div\>
-                        <h3\>התפתחות</h3\>
-                        <p\>
-                            לגלות תחומים חדשים, לצבור ניסיון
-                            ולהשתפר בכל יום קצת\.
-                        </p\>
-                    </article\>
-                </div\>
-            </div\>
-        </section\>
-        <\!\-\- אודותיי \-\-\>
-        <section class="about" id="about"\>
-            <div class="container"\>
-                <h2 class="section\-title"\>
-                    קצת <span\>עליי</span\>
-                </h2\>
-                <p class="section\-description"\>
-                    נעים להכיר\!
-                </p\>
-                <div class="about\-box"\>
-                    <p\>
-                        אני דויד, וזה האתר האישי שלי\.
-                        התחלתי לבנות אותו כדי ללמוד איך אתרים עובדים
-                        ולגלות מה אפשר ליצור בעזרת תכנות\.
-                        <br\><br\>
-                        האתר הזה הוא רק ההתחלה\.
-                        בהמשך אני מתכנן להוסיף לו עוד רעיונות,
-                        עיצובים ופיצ'רים חדשים\.
-                    </p\>
-                </div\>
-            </div\>
-        </section\>
-        <\!\-\- יצירת קשר \-\-\>
-        <section id="contact"\>
-            <div class="container"\>
-                <div class="contact\-box"\>
-                    <h2 class="section\-title"\>
-                        בואו <span\>נגיד שלום</span\> 👋
-                    </h2\>
-                    <p\>
-                        תודה שביקרתם באתר שלי\!
-                        רוצים לראות מה עוד אני יכול ליצור?
-                    </p\>
-                    <button class="btn" onclick="showMessage&#40;&#41;"\>
-                        לחצו כאן
-                    </button\>
-                    <p id="message" aria\-live="polite"
-                       style="margin\-top: 20px; margin\-bottom: 0;"\>
-                    </p\>
-                </div\>
-            </div\>
-        </section\>
-    </main\>
-    <\!\-\- תחתית \-\-\>
-    <footer\>
-        <p\>© 2026 האתר של דויד \| נבנה עם ❤️ וקצת קוד</p\>
-    </footer\>
-    <script\>
-        function showMessage&#40;&#41; \{
-            document\.getElementById&#40;"message"&#41;\.textContent =
-                "איזה כיף שביקרתם באתר שלי\! 😎";
-        \}
-    </script\>
-</body\>
-</html\>
+            }
+
+            .nav-links {
+                gap: 14px;
+                font-size: 14px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 390px;
+                padding: 60px 0;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 50px 0;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">DAVID.</a>
+
+            <ul class="nav-links">
+                <li><a href="#home">בית</a></li>
+                <li><a href="#about">אודותיי</a></li>
+                <li><a href="#interests">תחומי עניין</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="hero" id="home">
+            <div class="container">
+                <div class="tag">ברוכים הבאים לאתר שלי</div>
+
+                <h1>שלום, אני <span class="blue">דויד</span></h1>
+
+                <p>
+                    זה האתר האישי שלי, המקום שבו אני לומד,
+                    יוצר ומגלה דברים חדשים.
+                </p>
+
+                <a href="#about" class="button">בואו להכיר אותי</a>
+            </div>
+        </section>
+
+        <section id="interests">
+            <div class="container">
+                <h2 class="section-title">
+                    תחומי <span class="blue">העניין שלי</span>
+                </h2>
+
+                <p class="section-subtitle">
+                    דברים שמעניינים אותי ושאני רוצה לפתח.
+                </p>
+
+                <div class="cards">
+                    <div class="card">
+                        <div class="icon">💻</div>
+                        <h3>טכנולוגיה</h3>
+                        <p>
+                            ללמוד לבנות אתרים ולהבין איך עולם התכנות עובד.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="icon">🎯</div>
+                        <h3>מטרות</h3>
+                        <p>
+                            להציב מטרות, להתקדם בהדרגה וללמוד דברים חדשים.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="icon">🚀</div>
+                        <h3>התחלות חדשות</h3>
+                        <p>
+                            לנסות דברים חדשים ולגלות לאן אפשר להתקדם.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <h2 class="section-title">
+                    קצת <span class="blue">עליי</span>
+                </h2>
+
+                <p class="section-subtitle">נעים להכיר!</p>
+
+                <div class="about-box">
+                    <p>
+                        אני דויד, והתחלתי לבנות את האתר הזה כדי ללמוד
+                        איך ליצור אתר אינטרנט בעצמי.
+                        <br><br>
+                        זהו פרויקט שאני רוצה להמשיך לפתח,
+                        להוסיף לו רעיונות וללמוד ממנו עוד.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="contact-box">
+                    <h2 class="section-title">
+                        בואו נגיד <span class="blue">שלום!</span>
+                    </h2>
+
+                    <p>
+                        תודה שביקרתם באתר שלי.
+                    </p>
+
+                    <button class="button" onclick="showMessage()">
+                        לחצו כאן 😎
+                    </button>
+
+                    <p id="message" aria-live="polite"></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        © 2026 האתר של דויד | נבנה באהבה
+    </footer>
+
+    <script>
+        function showMessage() {
+            document.getElementById("message").textContent =
+                "הצלחתי! 😎 תודה שביקרתם באתר שלי!";
+        }
+    </script>
+
+</body>
+</html>
+```
